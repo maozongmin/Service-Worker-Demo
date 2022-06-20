@@ -1,0 +1,34 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Worker</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+
+<body>
+    <div>
+        走缓存资源的demo，1、演示main.css没有放入缓存的请求。2、演示将main.css追加进缓存
+    </div>
+    <script src="./main.js"></script>
+    <script>
+        /* 判断当前浏览器是否支持serviceWorker */
+        if ('serviceWorker' in navigator) {
+            /* 当页面加载完成就创建一个serviceWorker */
+            window.addEventListener('load', () => {
+                /* scope 参数是可选的，可以用来指定你想让 service worker 控制的内容的子目录。 在这个例子里，我们指定了 '/'，表示 根网域下的所有内容。这也是默认值。 */
+                navigator.serviceWorker.register('./serviceWorker.js', { scope: './' })
+                    .then(function (n) {
+                        console.log('sw registered: ServiceWorker n successful with scope: ', n.scope);
+                    })
+                    .catch(function (err) {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
+</body>
+
+</html>
