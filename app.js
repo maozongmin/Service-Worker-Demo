@@ -40,5 +40,5 @@ app
 
 /* 开始监听/启动服务（指定3000端口与成功回调） */
 server.listen(3000, () => {
-    console.log('listening on port 3000 ...');
+    console.log('listening on port http://localhost:3000 ...');
 });
